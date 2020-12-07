@@ -1,16 +1,17 @@
 package exceptions;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class University {
     String name;
-    List <Faculty> facultyList;
+    ArrayList<Faculty> facultyList = new ArrayList<Faculty>();
 
     public University(String name) {
         this.name = name;
     }
 
-    public University(String name, List<Faculty> facultyList) {
+    public University(String name, ArrayList<Faculty> facultyList) {
         this.name = name;
         this.facultyList = facultyList;
     }
@@ -27,7 +28,7 @@ public class University {
         return facultyList;
     }
 
-    public void setFacultyList(List<Faculty> facultyList) {
+    public void setFacultyList(ArrayList<Faculty> facultyList) {
         this.facultyList = facultyList;
     }
 }

@@ -1,16 +1,17 @@
 package exceptions;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class Faculty{
+public class Faculty implements AverageSubjectMarkCalculable{
     String name;
-    List<Group> groupList;
+    ArrayList<Group> groupList = new ArrayList<Group>();
 
     public Faculty(String name) {
         this.name = name;
     }
 
-    public Faculty(String name, List<Group> groupList) {
+    public Faculty(String name, ArrayList<Group> groupList) {
         this.name = name;
         this.groupList = groupList;
     }
@@ -27,7 +28,16 @@ public class Faculty{
         return groupList;
     }
 
-    public void setGroupList(List<Group> groupList) {
+    public void setGroupList(ArrayList<Group> groupList) {
         this.groupList = groupList;
+    }
+
+    public float CalculateAverageMarkOnSubject(Subject subject) {
+        float sumOfMarks = 0;
+        for (Group group : groupList) {
+            sumOfMarks += group.CalculateAverageMarkOnSubject(subject);
+            System.out.println(sumOfMarks);
+        }
+        return sumOfMarks/groupList.size();
     }
 }

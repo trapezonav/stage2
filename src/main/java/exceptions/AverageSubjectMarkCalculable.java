@@ -1,5 +1,5 @@
 package exceptions;
 
 public interface AverageSubjectMarkCalculable {
-    public double  CalculateAverageMarkOnSubject();
+    float  CalculateAverageMarkOnSubject(Subject subject);
 }

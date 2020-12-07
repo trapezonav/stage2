@@ -18,17 +18,21 @@ public class Runner {
         student3.subjectsAndMarks.put(Subject.ECONOMICS, 3);
 
         Student student4 = new Student("Zina");
-        student3.subjectsAndMarks.put(Subject.ENGLISH, 4);
-        student3.subjectsAndMarks.put(Subject.MATHS, 1);
-        student3.subjectsAndMarks.put(Subject.ECONOMICS, 1);
+        student4.subjectsAndMarks.put(Subject.ENGLISH, 4);
+        student4.subjectsAndMarks.put(Subject.ECONOMICS, 1);
+
+        Student student5 = new Student("Zina");
+        student5.subjectsAndMarks.put(Subject.ENGLISH, 4);
+        student5.subjectsAndMarks.put(Subject.ECONOMICS, 1);
 
         Group group1 = new Group("PO2");
         group1.studentList.add(student1);
         group1.studentList.add(student2);
         group1.studentList.add(student3);
+        group1.studentList.add(student5);
 
         Group group2 = new Group("PO1");
-        group1.studentList.add(student4);
+        group2.studentList.add(student4);
 
         Faculty faculty1 = new Faculty("POIT");
         faculty1.groupList.add(group1);
@@ -36,6 +40,13 @@ public class Runner {
 
         University university = new University("BGU");
         university.facultyList.add(faculty1);
+
+
+        System.out.println(group1.CalculateAverageMarkOnSubject(Subject.MATHS));
+//        System.out.println(group2.CalculateAverageMarkOnSubject(Subject.MATHS));
+
+
+//        System.out.println(faculty1.CalculateAverageMarkOnSubject(Subject.MATHS));
 
 
 

@@ -3,7 +3,7 @@ package exceptions;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Student {
+public class Student implements AverageSubjectMarkCalculable{
     String name;
     HashMap <Subject, Integer> subjectsAndMarks = new HashMap<Subject, Integer>();
 
@@ -39,5 +39,9 @@ public class Student {
         }
 
         return result/subjectsAndMarks.size();
+    }
+
+    public float CalculateAverageMarkOnSubject(Subject subject) {
+        return subjectsAndMarks.get(subject);
     }
 }
