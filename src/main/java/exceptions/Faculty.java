@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Faculty implements AverageSubjectMarkCalculable{
-    String name;
-    ArrayList<Group> groupList = new ArrayList<Group>();
+    private String name;
+    private ArrayList<Group> groupList = new ArrayList<Group>();
 
     public Faculty(String name) {
         this.name = name;
@@ -32,12 +32,17 @@ public class Faculty implements AverageSubjectMarkCalculable{
         this.groupList = groupList;
     }
 
-    public float CalculateAverageMarkOnSubject(Subject subject) {
+    public Float CalculateAverageMarkOnSubject(Subject subject) {
         float sumOfMarks = 0;
+        int iterator = 0;
         for (Group group : groupList) {
-            sumOfMarks += group.CalculateAverageMarkOnSubject(subject);
-            System.out.println(sumOfMarks);
+            if (group.CalculateAverageMarkOnSubject(subject) != null) {
+                sumOfMarks += group.CalculateAverageMarkOnSubject(subject);
+                iterator++;
+            }
         }
-        return sumOfMarks/groupList.size();
+        if (iterator > 0){
+            return sumOfMarks/iterator;
+        }else return null;
     }
 }

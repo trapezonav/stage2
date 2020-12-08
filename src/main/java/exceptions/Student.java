@@ -3,9 +3,9 @@ package exceptions;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Student implements AverageSubjectMarkCalculable{
-    String name;
-    HashMap <Subject, Integer> subjectsAndMarks = new HashMap<Subject, Integer>();
+public class Student{
+    private String name;
+    private HashMap <Subject, Integer> subjectsAndMarks = new HashMap<Subject, Integer>();
 
     public Student(String name) {
         this.name = name;
@@ -33,15 +33,10 @@ public class Student implements AverageSubjectMarkCalculable{
     }
 
     public double averageMark(){
-        double result=0;
+        double sumOfMarks=0;
         for (Subject subject:subjectsAndMarks.keySet()) {
-            result += subjectsAndMarks.get(subject);
+            sumOfMarks += subjectsAndMarks.get(subject);
         }
-
-        return result/subjectsAndMarks.size();
-    }
-
-    public float CalculateAverageMarkOnSubject(Subject subject) {
-        return subjectsAndMarks.get(subject);
+        return sumOfMarks/subjectsAndMarks.size();
     }
 }

@@ -2,6 +2,7 @@ package exceptions;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class Group implements AverageSubjectMarkCalculable{
     String name;
@@ -32,16 +33,18 @@ public class Group implements AverageSubjectMarkCalculable{
         this.studentList = studentList;
     }
 
-    public float CalculateAverageMarkOnSubject(Subject subject) {
+    public Float CalculateAverageMarkOnSubject(Subject subject) {
         float mark=0;
         int iterator = 0;
         for (Student student : studentList) {
-            if (student.subjectsAndMarks.get(subject) != null){
-                mark += student.subjectsAndMarks.get(subject);
+            Map<Subject, Integer> marksBySubject = student.getSubjectsAndMarks();
+            if (marksBySubject.containsKey(subject)){
+                mark += marksBySubject.get(subject);
                 iterator++;
-                System.out.println(mark + " " + iterator);
             }
         }
-        return mark/iterator;
+        if (iterator > 0 ){
+            return mark/iterator;
+        }else return null;
     }
 }
