@@ -32,12 +32,12 @@ public class University implements AverageSubjectMarkCalculable{
         this.facultyList = facultyList;
     }
 
-    public Float CalculateAverageMarkOnSubject(Subject subject) {
+    public Float calculateAverageMarkOnSubject(Subject subject) {
         float sumOfMarks = 0;
         int iterator =0;
         for (Faculty faculty:facultyList) {
-            if (faculty.CalculateAverageMarkOnSubject(subject) != null) {
-                sumOfMarks += faculty.CalculateAverageMarkOnSubject(subject);
+            if (faculty.calculateAverageMarkOnSubject(subject) != null) {
+                sumOfMarks += faculty.calculateAverageMarkOnSubject(subject);
                 iterator++;
             }
         }

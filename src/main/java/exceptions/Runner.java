@@ -42,6 +42,9 @@ public class Runner {
         university.getFacultyList().add(faculty1);
 
         System.out.println(student1.averageMark());
-        System.out.println(university.CalculateAverageMarkOnSubject(Subject.MATHS));
+        System.out.println(university.calculateAverageMarkOnSubject(Subject.MATHS));
+        System.out.println(faculty1.getAverageMark("PO2", Subject.ECONOMICS));
+
+
     }
 }

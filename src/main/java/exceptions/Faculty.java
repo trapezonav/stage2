@@ -32,17 +32,26 @@ public class Faculty implements AverageSubjectMarkCalculable{
         this.groupList = groupList;
     }
 
-    public Float CalculateAverageMarkOnSubject(Subject subject) {
+    public Float calculateAverageMarkOnSubject(Subject subject) {
         float sumOfMarks = 0;
         int iterator = 0;
         for (Group group : groupList) {
-            if (group.CalculateAverageMarkOnSubject(subject) != null) {
-                sumOfMarks += group.CalculateAverageMarkOnSubject(subject);
+            if (group.calculateAverageMarkOnSubject(subject) != null) {
+                sumOfMarks += group.calculateAverageMarkOnSubject(subject);
                 iterator++;
             }
         }
         if (iterator > 0){
             return sumOfMarks/iterator;
         }else return null;
+    }
+
+    public Float getAverageMark(String groupName, Subject subject){
+        for (Group group: groupList) {
+            if (group.getName().equals(groupName)){
+                return group.calculateAverageMarkOnSubject(subject);
+            }
+        }
+        return null;
     }
 }

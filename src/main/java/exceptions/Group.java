@@ -33,7 +33,7 @@ public class Group implements AverageSubjectMarkCalculable{
         this.studentList = studentList;
     }
 
-    public Float CalculateAverageMarkOnSubject(Subject subject) {
+    public Float calculateAverageMarkOnSubject(Subject subject) {
         float mark=0;
         int iterator = 0;
         for (Student student : studentList) {
