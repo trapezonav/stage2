@@ -1,7 +1,6 @@
 package exceptions;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Faculty implements AverageSubjectMarkCalculable{
     private String name;
@@ -24,15 +23,12 @@ public class Faculty implements AverageSubjectMarkCalculable{
         this.name = name;
     }
 
-    public List<Group> getGroupList() {
-        return groupList;
+    public void addGroup(Group group){
+        groupList.add(group);
     }
 
-    public void setGroupList(ArrayList<Group> groupList) {
-        this.groupList = groupList;
-    }
-
-    public Float calculateAverageMarkOnSubject(Subject subject) {
+    public Float calculateAverageMarkOnSubject(Subject subject) throws Exception {
+        if (groupList.isEmpty()) throw new Exception("Have no groups");
         float sumOfMarks = 0;
         int iterator = 0;
         for (Group group : groupList) {
@@ -46,7 +42,7 @@ public class Faculty implements AverageSubjectMarkCalculable{
         }else return null;
     }
 
-    public Float getAverageMark(String groupName, Subject subject){
+    public Float getAverageMark(String groupName, Subject subject) throws Exception {
         for (Group group: groupList) {
             if (group.getName().equals(groupName)){
                 return group.calculateAverageMarkOnSubject(subject);

@@ -1,7 +1,6 @@
 package exceptions;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class University implements AverageSubjectMarkCalculable{
     private String name;
@@ -24,15 +23,12 @@ public class University implements AverageSubjectMarkCalculable{
         this.name = name;
     }
 
-    public List<Faculty> getFacultyList() {
-        return facultyList;
+    public void addFaculty(Faculty faculty){
+        facultyList.add(faculty);
     }
 
-    public void setFacultyList(ArrayList<Faculty> facultyList) {
-        this.facultyList = facultyList;
-    }
-
-    public Float calculateAverageMarkOnSubject(Subject subject) {
+    public Float calculateAverageMarkOnSubject(Subject subject) throws Exception {
+        if (facultyList.isEmpty()) throw new Exception("Have no faculty");
         float sumOfMarks = 0;
         int iterator =0;
         for (Faculty faculty:facultyList) {

@@ -11,11 +11,6 @@ public class Student{
         this.name = name;
     }
 
-    public Student(String name, HashMap<Subject, Integer> subjectsAndMarks) {
-        this.name = name;
-        this.subjectsAndMarks = subjectsAndMarks;
-    }
-
     public String getName() {
         return name;
     }
@@ -24,19 +19,34 @@ public class Student{
         this.name = name;
     }
 
-    public Map<Subject, Integer> getSubjectsAndMarks() {
+    private Map<Subject, Integer> getSubjectsAndMarks(){
         return subjectsAndMarks;
     }
 
-    public void setSubjectsAndMarks(HashMap<Subject, Integer> subjectsAndMarks) {
-        this.subjectsAndMarks = subjectsAndMarks;
+    public void setMarksOnSubjects(Subject subject, Integer mark) throws Exception {
+        if (mark >= 0 & mark <= 10) {
+            subjectsAndMarks.put(subject,mark);
+        }else throw new Exception("Incorrect mark");
+
     }
 
-    public double averageMark(){
+    public Integer getMarkBySubject(Subject subject) throws Exception {
+        if (subjectsAndMarks.isEmpty()) throw new Exception("Student have no subjects");
+        return subjectsAndMarks.get(subject);
+    }
+
+    public double averageMark() throws Exception {
+        if (subjectsAndMarks.isEmpty())throw new Exception("Student have no subjects");
         double sumOfMarks=0;
+        int iterator = 0;
         for (Subject subject:subjectsAndMarks.keySet()) {
-            sumOfMarks += subjectsAndMarks.get(subject);
+            if (subjectsAndMarks.get(subject) != null) {
+                sumOfMarks += subjectsAndMarks.get(subject);
+                iterator++;
+            }
         }
-        return sumOfMarks/subjectsAndMarks.size();
+        if (iterator > 0) {
+            return sumOfMarks/iterator;
+        }else throw new Exception("Student have no marks");
     }
 }

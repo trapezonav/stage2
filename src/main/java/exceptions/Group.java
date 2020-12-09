@@ -1,20 +1,13 @@
 package exceptions;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
-public class Group implements AverageSubjectMarkCalculable{
-    String name;
-    ArrayList<Student> studentList = new ArrayList<Student>();
+public class Group implements AverageSubjectMarkCalculable {
+    private String name;
+    private ArrayList<Student> studentList = new ArrayList<Student>();
 
     public Group(String name) {
         this.name = name;
-    }
-
-    public Group(String name, ArrayList<Student> studentList) {
-        this.name = name;
-        this.studentList = studentList;
     }
 
     public String getName() {
@@ -25,26 +18,23 @@ public class Group implements AverageSubjectMarkCalculable{
         this.name = name;
     }
 
-    public List<Student> getStudentList() {
-        return studentList;
+    public void addStudent(Student student){
+        studentList.add(student);
     }
 
-    public void setStudentList(ArrayList<Student> studentList) {
-        this.studentList = studentList;
-    }
-
-    public Float calculateAverageMarkOnSubject(Subject subject) {
-        float mark=0;
+    public Float calculateAverageMarkOnSubject(Subject subject) throws Exception {
+        if (studentList.isEmpty()) throw new Exception("Have no students");
+        float mark = 0;
         int iterator = 0;
         for (Student student : studentList) {
-            Map<Subject, Integer> marksBySubject = student.getSubjectsAndMarks();
-            if (marksBySubject.containsKey(subject)){
-                mark += marksBySubject.get(subject);
+            Integer markBySubject = student.getMarkBySubject(subject);
+            if (markBySubject != null) {
+                mark += markBySubject;
                 iterator++;
             }
         }
-        if (iterator > 0 ){
-            return mark/iterator;
-        }else return null;
+        if (iterator > 0) {
+            return mark / iterator;
+        } else return null;
     }
 }
