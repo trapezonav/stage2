@@ -20,7 +20,6 @@ public class TaskTwo {
                     strings.set(i,str);
                 }
             }
-            strings.forEach(System.out::println);
             for (String str: strings) {
                 bufferedWriter.write(str);
                 bufferedWriter.newLine();
