@@ -1,0 +1,52 @@
+package exceptions;
+
+import java.util.HashMap;
+import java.util.Map;
+
+private class Student{
+    private String name;
+    private HashMap <Subject, Integer> subjectsAndMarks = new HashMap<Subject, Integer>();
+
+    private Student(String name) {
+        this.name = name;
+    }
+
+    private String getName() {
+        return name;
+    }
+
+    private void setName(String name) {
+        this.name = name;
+    }
+
+    private Map<Subject, Integer> getSubjectsAndMarks(){
+        return subjectsAndMarks;
+    }
+
+    private void setMarksOnSubjects(Subject subject, Integer mark) throws Exception {
+        if (mark >= 0 & mark <= 10) {
+            subjectsAndMarks.put(subject,mark);
+        }else throw new Exception("Incorrect mark");
+
+    }
+
+    private Integer getMarkBySubject(Subject subject) throws Exception {
+        if (subjectsAndMarks.isEmpty()) throw new Exception("Student have no subjects");
+        return subjectsAndMarks.get(subject);
+    }
+
+    private double averageMark() throws Exception {
+        if (subjectsAndMarks.isEmpty())throw new Exception("Student have no subjects");
+        double sumOfMarks=0;
+        int iterator = 0;
+        for (Subject subject:subjectsAndMarks.keySet()) {
+            if (subjectsAndMarks.get(subject) != null) {
+                sumOfMarks += subjectsAndMarks.get(subject);
+                iterator++;
+            }
+        }
+        if (iterator > 0) {
+            return sumOfMarks/iterator;
+        }else throw new Exception("Student have no marks");
+    }
+}

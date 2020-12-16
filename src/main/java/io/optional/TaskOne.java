@@ -5,12 +5,12 @@ import java.util.*;
 
 public class TaskOne {
     public static void main(String[] args) {
-        File dir = new File("newDir");
+        File dir = new File("src/main/resources/taskOne/");
         if (!dir.exists()){
             dir.mkdir();
         }
 
-        File file = new File("newDir/firsttask.txt");
+        File file = new File("src/main/resources/taskOne/taskOne.txt");
         Random random = new Random();
 
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file))) {
@@ -25,9 +25,7 @@ public class TaskOne {
         List<String> strings = new ArrayList<>();
 
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
-            while (bufferedReader.ready()) {
-                strings.add(bufferedReader.readLine());
-            }
+            bufferedReader.lines().forEach(strings::add);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
