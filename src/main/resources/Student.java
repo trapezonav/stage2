@@ -3,19 +3,19 @@ package exceptions;
 import java.util.HashMap;
 import java.util.Map;
 
-private class Student{
+public class Student{
     private String name;
     private HashMap <Subject, Integer> subjectsAndMarks = new HashMap<Subject, Integer>();
 
-    private Student(String name) {
+    public Student(String name) {
         this.name = name;
     }
 
-    private String getName() {
+    public String getName() {
         return name;
     }
 
-    private void setName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -23,19 +23,19 @@ private class Student{
         return subjectsAndMarks;
     }
 
-    private void setMarksOnSubjects(Subject subject, Integer mark) throws Exception {
+    public void setMarksOnSubjects(Subject subject, Integer mark) throws Exception {
         if (mark >= 0 & mark <= 10) {
             subjectsAndMarks.put(subject,mark);
         }else throw new Exception("Incorrect mark");
 
     }
 
-    private Integer getMarkBySubject(Subject subject) throws Exception {
+    public Integer getMarkBySubject(Subject subject) throws Exception {
         if (subjectsAndMarks.isEmpty()) throw new Exception("Student have no subjects");
         return subjectsAndMarks.get(subject);
     }
 
-    private double averageMark() throws Exception {
+    public double averageMark() throws Exception {
         if (subjectsAndMarks.isEmpty())throw new Exception("Student have no subjects");
         double sumOfMarks=0;
         int iterator = 0;
