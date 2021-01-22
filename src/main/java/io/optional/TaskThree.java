@@ -13,17 +13,15 @@ public class TaskThree {
         File result = new File("src/main/resources/taskThree/Student.java");
 
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(origin));
-             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(result))){
+             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(result))) {
             String str;
-            while ((str = bufferedReader.readLine()) != null){
+            while ((str = bufferedReader.readLine()) != null) {
                 str = new StringBuffer(str).reverse().toString();
                 System.out.println(str);
                 bufferedWriter.write(str);
                 bufferedWriter.newLine();
             }
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }

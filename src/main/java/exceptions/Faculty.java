@@ -2,9 +2,9 @@ package exceptions;
 
 import java.util.ArrayList;
 
-public class Faculty implements AverageSubjectMarkCalculable{
+public class Faculty implements AverageSubjectMarkCalculable {
     private String name;
-    private ArrayList<Group> groupList = new ArrayList<Group>();
+    private ArrayList<Group> groupList = new ArrayList<>();
 
     public Faculty(String name) {
         this.name = name;
@@ -23,7 +23,7 @@ public class Faculty implements AverageSubjectMarkCalculable{
         this.name = name;
     }
 
-    public void addGroup(Group group){
+    public void addGroup(Group group) {
         groupList.add(group);
     }
 
@@ -37,14 +37,14 @@ public class Faculty implements AverageSubjectMarkCalculable{
                 iterator++;
             }
         }
-        if (iterator > 0){
-            return sumOfMarks/iterator;
-        }else return null;
+        if (iterator > 0) {
+            return sumOfMarks / iterator;
+        } else return null;
     }
 
     public Float getAverageMark(String groupName, Subject subject) throws Exception {
-        for (Group group: groupList) {
-            if (group.getName().equals(groupName)){
+        for (Group group : groupList) {
+            if (group.getName().equals(groupName)) {
                 return group.calculateAverageMarkOnSubject(subject);
             }
         }

@@ -6,7 +6,7 @@ import java.util.*;
 public class TaskOne {
     public static void main(String[] args) {
         File dir = new File("src/main/resources/taskOne/");
-        if (!dir.exists()){
+        if (!dir.exists()) {
             dir.mkdir();
         }
 
@@ -26,20 +26,18 @@ public class TaskOne {
 
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
             bufferedReader.lines().forEach(strings::add);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         try {
             strings.sort(Comparator.comparingInt(Integer::parseInt));
-        }catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             e.printStackTrace();
         }
 
-        try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file))){
-            for (String string: strings) {
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file))) {
+            for (String string : strings) {
                 bufferedWriter.write(string);
                 bufferedWriter.newLine();
             }

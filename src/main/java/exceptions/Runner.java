@@ -1,7 +1,7 @@
 package exceptions;
 
 public class Runner {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         try {
             Student student1 = new Student("Vasya");
             student1.setMarksOnSubjects(Subject.ENGLISH, 5);
@@ -44,13 +44,13 @@ public class Runner {
             University university = new University("BGU");
             university.addFaculty(faculty1);
 
-        System.out.println(student1.averageMark());
+            System.out.println(student1.averageMark());
 
-        System.out.println(university.calculateAverageMarkOnSubject(Subject.MATHS));
+            System.out.println(university.calculateAverageMarkOnSubject(Subject.MATHS));
 
-        System.out.println(faculty1.getAverageMark("PO2", Subject.ECONOMICS));
+            System.out.println(faculty1.getAverageMark("PO2", Subject.ECONOMICS));
 
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

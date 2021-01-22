@@ -2,9 +2,9 @@ package exceptions;
 
 import java.util.ArrayList;
 
-public class University implements AverageSubjectMarkCalculable{
+public class University implements AverageSubjectMarkCalculable {
     private String name;
-    private ArrayList<Faculty> facultyList = new ArrayList<Faculty>();
+    private ArrayList<Faculty> facultyList = new ArrayList<>();
 
     public University(String name) {
         this.name = name;
@@ -23,22 +23,22 @@ public class University implements AverageSubjectMarkCalculable{
         this.name = name;
     }
 
-    public void addFaculty(Faculty faculty){
+    public void addFaculty(Faculty faculty) {
         facultyList.add(faculty);
     }
 
     public Float calculateAverageMarkOnSubject(Subject subject) throws Exception {
         if (facultyList.isEmpty()) throw new Exception("Have no faculty");
         float sumOfMarks = 0;
-        int iterator =0;
-        for (Faculty faculty:facultyList) {
+        int iterator = 0;
+        for (Faculty faculty : facultyList) {
             if (faculty.calculateAverageMarkOnSubject(subject) != null) {
                 sumOfMarks += faculty.calculateAverageMarkOnSubject(subject);
                 iterator++;
             }
         }
-        if (iterator > 0){
-            return sumOfMarks/iterator;
-        }else return null;
+        if (iterator > 0) {
+            return sumOfMarks / iterator;
+        } else return null;
     }
 }

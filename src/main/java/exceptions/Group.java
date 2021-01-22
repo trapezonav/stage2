@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Group implements AverageSubjectMarkCalculable {
     private String name;
-    private ArrayList<Student> studentList = new ArrayList<Student>();
+    private ArrayList<Student> studentList = new ArrayList<>();
 
     public Group(String name) {
         this.name = name;
@@ -18,7 +18,7 @@ public class Group implements AverageSubjectMarkCalculable {
         this.name = name;
     }
 
-    public void addStudent(Student student){
+    public void addStudent(Student student) {
         studentList.add(student);
     }
 

@@ -3,7 +3,7 @@ package threads.optionaltask;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.TimeUnit;
 
-public class PlaneThread extends Thread{
+public class PlaneThread extends Thread {
 
     private ArrayBlockingQueue<Runway> runways;
 
