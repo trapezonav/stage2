@@ -5,8 +5,10 @@ import java.util.concurrent.TimeUnit;
 
 public class Parking {
     public static void main(String[] args) {
-        ArrayBlockingQueue<Object> parkingSpaces = new ArrayBlockingQueue<>(10);
-        for (int i = 0; i < 100; i++) {
+        int numberOfParkingSpaces = 10;
+        int numberOfCars = 100;
+        ArrayBlockingQueue<Object> parkingSpaces = new ArrayBlockingQueue<>(numberOfParkingSpaces);
+        for (int i = 0; i < numberOfCars; i++) {
             new Thread(() -> {
                 Object car = new Object();
                 boolean resultOfAdding;
